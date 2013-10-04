@@ -8,3 +8,5 @@ std::string LocalizationEntry::type() {
 std::string LocalizationEntry::name() {
 	return "generic_localization_entry";
 }
+
+std::string LocalizationEntry::toSLLF() {}

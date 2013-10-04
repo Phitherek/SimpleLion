@@ -19,6 +19,8 @@ public:
 	///< \return Type of the entry as string, either entry, category or string.
 	virtual std::string name(); ///< \brief A virtual method that returns name of the entry.
 	///< \return Name of the entry as string.
+	virtual std::string toSLLF(); ///< \brief A virtual method that converts the entry to SLLF format.
+	///< \return The entry in SLLF format.
 };
 }
 #endif
