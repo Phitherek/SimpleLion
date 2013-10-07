@@ -19,16 +19,16 @@ std::string LocalizationString::name() {
 	return _name;
 }
 
-std::string LocalizationString:value() {
+std::string LocalizationString::value() {
 	return _value;
 }
 
-std::string LocalizationString::getName() {
-	return _name;
+void LocalizationString::setName(std::string name) {
+	_name = name;
 }
 
-std::string LocalizationString::getValue() {
-	return _value;
+void LocalizationString::setValue(std::string value) {
+	_value = value;
 }
 
 std::string LocalizationString::toSLLF() {
