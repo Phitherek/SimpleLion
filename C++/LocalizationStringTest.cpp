@@ -38,8 +38,15 @@ int main() {
 				string name;
 				cin >> name;
 				cout << "Enter value: ";
-				string value;
-				cin >> value;
+				cin.ignore();
+				string value = "";
+				char c = ' ';
+				while(c != '\n') {
+					c = cin.get();
+					if(c != '\n') {
+						value += c;
+					}
+				};
 				str = new SimpleLion::LocalizationString(name, value);
 			} else {
 				cout << "The string already exists, re-run the test!" << endl;
@@ -65,8 +72,15 @@ int main() {
 		case 5:
 			if(str != NULL) {
 				cout << "Enter value: ";
-				string value;
-				cin >> value;
+				cin.ignore();
+				string value = "";
+				char c = ' ';
+				while(c != '\n') {
+					c = cin.get();
+					if(c != '\n') {
+						value += c;
+					}
+				}
 				str->setValue(value);
 			} else {
 				cout << "The string does not exist. Create one!" << endl;

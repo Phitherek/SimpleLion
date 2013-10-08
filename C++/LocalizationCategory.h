@@ -49,6 +49,8 @@ public:
 	void resetLocalizationEntryIterator(); ///< \brief A method that resets the iterator of LocalizationEntry array.
 	bool localizationEntriesAtEnd(); ///< \brief A method that returns if LocalizationEntry array iterator has reached its end.
 	///< \return True if LocalizationArray iterator has reached its end, false otherwise.
+	void setName(std::string name); ///< \brief A function that sets name of the category.
+	///< \param name New name of the category.
 	std::string toSLLF(); ///< \brief A virtual method that converts the entry to SLLF format.
 	///< \return The entry in SLLF format.
 };

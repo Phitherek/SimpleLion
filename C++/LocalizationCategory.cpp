@@ -108,7 +108,8 @@ void LocalizationCategory::removeLocalizationEntry(int idx) {
 		int newSize = _subentriesSize-1;
 		if(newSize > 0) {
 			LocalizationEntry** newSubentries = new LocalizationEntry*[newSize];
-			for(int i = 0; i < idx; i++) {
+			int i;
+			for(i = 0; i < idx; i++) {
 				newSubentries[i] = _subentries[i];
 			}
 			i++;
@@ -171,7 +172,11 @@ bool LocalizationCategory::localizationEntriesAtEnd() {
 	return _subentriesEnd;
 }
 
-std::string toSLLF() {
+void LocalizationCategory::setName(std::string name) {
+	_name = name;
+}
+
+std::string LocalizationCategory::toSLLF() {
 	std::string out = "";
 	out += "{" + _name + "}\n";
 	for(int i = 0; i < _subentriesSize; i++) {
