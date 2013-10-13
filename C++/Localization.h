@@ -34,7 +34,7 @@ public:
 	///< \param locale A locale id to load (e.g. en, pl etc.)
 	Localization(Localization& cpy); ///< \brief A copy constructor.
 	///< \param cpy Object to copy.
-	~Localization() ///< A destructor.
+	~Localization(); ///< A destructor.
 	void setLocale(std::string locale); ///< \brief A function that sets, loads and parses specified locale.
 	///< \param locale Locale to set, load and parse.
 	std::string query(std::string queryString); ///< \brief A function that finds a translated string according to specified query string.

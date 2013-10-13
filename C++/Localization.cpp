@@ -18,12 +18,12 @@ Localization::Localization(std::string path) {
 	boost::filesystem::directory_iterator begin(*_basepath);
 	boost::filesystem::directory_iterator end;
 	// Directory should not be empty, because we are loading stuff.
-	if(iter == end) {
+	if(begin == end) {
 		throw SimpleLion::FilesystemException("No files present!", _basepath->string());
 	}
 	// How many SLLF files are there in the directory?
 	_localesSize = 0;
-	for(boost::filesystem::directory_iterator iter = begin; iter != end; iter++) {
+	for(boost::filesystem::directory_iterator iter(*_basepath); iter != end; iter++) {
 		if((*iter).path().extension().string() == ".sllf") {
 			_localesSize++;
 		}
@@ -34,9 +34,9 @@ Localization::Localization(std::string path) {
 	}
 	_locales = new std::string[_localesSize];
 	int i = 0;
-	for(boost::filesystem::directory_iterator iter = begin; iter != end; iter++) {
+	for(boost::filesystem::directory_iterator iter(*_basepath); iter != end; iter++) {
 		if((*iter).path().extension().string() == ".sllf") {
-			available_locales[i] = (*iter).path().stem().string();
+			_locales[i] = (*iter).path().stem().string();
 			i++;
 		}
 	}
@@ -57,12 +57,12 @@ Localization::Localization(std::string path, std::string locale) {
 	boost::filesystem::directory_iterator begin(*_basepath);
 	boost::filesystem::directory_iterator end;
 	// Directory should not be empty, because we are loading stuff.
-	if(iter == end) {
+	if(begin == end) {
 		throw SimpleLion::FilesystemException("No files present!", _basepath->string());
 	}
 	// How many SLLF files are there in the directory?
 	_localesSize = 0;
-	for(boost::filesystem::directory_iterator iter = begin; iter != end; iter++) {
+	for(boost::filesystem::directory_iterator iter(*_basepath); iter != end; iter++) {
 		if((*iter).path().extension().string() == ".sllf") {
 			_localesSize++;
 		}
@@ -73,16 +73,16 @@ Localization::Localization(std::string path, std::string locale) {
 	// Store locale ids (the stem() returns that) into the array.
 	_locales = new std::string[_localesSize];
 	int i = 0;
-	for(boost::filesystem::directory_iterator iter = begin; iter != end; iter++) {
+	for(boost::filesystem::directory_iterator iter(*_basepath); iter != end; iter++) {
 		if((*iter).path().extension().string() == ".sllf") {
-			available_locales[i] = (*iter).path().stem().string();
+			_locales[i] = (*iter).path().stem().string();
 			i++;
 		}
 	}
 	// Check if selected locale file is available
 	bool available = false;
 	for(int j = 0; j < _localesSize; j++) {
-		if(available_locales[j] == locale) {
+		if(_locales[j] == locale) {
 			available = true;
 			break;
 		}
@@ -107,7 +107,7 @@ Localization::Localization(std::string path, std::string locale) {
 	}
 	
 	// Parse file to structures
-	ifstream sllfin(localepath.c_str());
+	std::ifstream sllfin(localepath.c_str());
 	if(!sllfin) {
 		throw SimpleLion::FileException("Could not open file!", localepath.string());
 	}
@@ -169,7 +169,7 @@ Localization::Localization(std::string path, std::string locale) {
 								tmpcat = NULL;
 							} else {
 								int newSize = _fileSize+1;
-								SimpleLion::LocalizationEntry** newFile = new SimpleLion::LocalizationEntry[newSize];
+								SimpleLion::LocalizationEntry** newFile = new SimpleLion::LocalizationEntry*[newSize];
 								if(_file != NULL) {
 									for(int i = 0; i < _fileSize; i++) {
 										newFile[i] = _file[i];
@@ -201,7 +201,7 @@ Localization::Localization(std::string path, std::string locale) {
 						SimpleLion::LocalizationString* ls = new SimpleLion::LocalizationString(name, value);
 						if(cat == NULL) {
 							int newSize = _fileSize+1;
-							SimpleLion::LocalizationEntry** newFile = new SimpleLion::LocalizationEntry[newSize];
+							SimpleLion::LocalizationEntry** newFile = new SimpleLion::LocalizationEntry*[newSize];
 							if(_file != NULL) {
 								for(int i = 0; i < _fileSize; i++) {
 									newFile[i] = _file[i];
@@ -216,7 +216,7 @@ Localization::Localization(std::string path, std::string locale) {
 						}
 					}
 					name = "";
-					value = ""
+					value = "";
 				}
 			}
 		}
@@ -233,7 +233,7 @@ Localization::Localization(Localization& cpy) {
 	if(cpy._file == NULL) {
 		_file = cpy._file;
 	} else {
-		_file = new SimpleLion::LocalizationEntry[cpy._fileSize];
+		_file = new SimpleLion::LocalizationEntry*[cpy._fileSize];
 		for(int i = 0; i < _fileSize; i++) {
 			_file[i] = cpy._file[i];
 		}
@@ -253,7 +253,7 @@ Localization::~Localization() {
 		delete _basepath;
 	}
 	_basepath = NULL;
-	_locale = NULL;
+	_locale = "";
 	if(_file != NULL) {
 		for(int i = 0; i < _fileSize; i++) {
 			delete _file[i];
@@ -274,12 +274,12 @@ void Localization::setLocale(std::string locale) {
 	boost::filesystem::directory_iterator begin(*_basepath);
 	boost::filesystem::directory_iterator end;
 	// Directory should not be empty, because we are loading stuff.
-	if(iter == end) {
+	if(begin == end) {
 		throw SimpleLion::FilesystemException("No files present!", _basepath->string());
 	}
 	// How many SLLF files are there in the directory?
 	_localesSize = 0;
-	for(boost::filesystem::directory_iterator iter = begin; iter != end; iter++) {
+	for(boost::filesystem::directory_iterator iter(*_basepath); iter != end; iter++) {
 		if((*iter).path().extension().string() == ".sllf") {
 			_localesSize++;
 		}
@@ -290,16 +290,16 @@ void Localization::setLocale(std::string locale) {
 	// Store locale ids (the stem() returns that) into the array.
 	_locales = new std::string[_localesSize];
 	int i = 0;
-	for(boost::filesystem::directory_iterator iter = begin; iter != end; iter++) {
+	for(boost::filesystem::directory_iterator iter(*_basepath); iter != end; iter++) {
 		if((*iter).path().extension().string() == ".sllf") {
-			available_locales[i] = (*iter).path().stem().string();
+			_locales[i] = (*iter).path().stem().string();
 			i++;
 		}
 	}
 	// Check if selected locale file is available
 	bool available = false;
 	for(int j = 0; j < _localesSize; j++) {
-		if(available_locales[j] == locale) {
+		if(_locales[j] == locale) {
 			available = true;
 			break;
 		}
@@ -324,7 +324,7 @@ void Localization::setLocale(std::string locale) {
 	}
 	
 	// Parse file to structures
-	ifstream sllfin(localepath.c_str());
+	std::ifstream sllfin(localepath.c_str());
 	if(!sllfin) {
 		throw SimpleLion::FileException("Could not open file!", localepath.string());
 	}
@@ -386,7 +386,7 @@ void Localization::setLocale(std::string locale) {
 								tmpcat = NULL;
 							} else {
 								int newSize = _fileSize+1;
-								SimpleLion::LocalizationEntry** newFile = new SimpleLion::LocalizationEntry[newSize];
+								SimpleLion::LocalizationEntry** newFile = new SimpleLion::LocalizationEntry*[newSize];
 								if(_file != NULL) {
 									for(int i = 0; i < _fileSize; i++) {
 										newFile[i] = _file[i];
@@ -418,7 +418,7 @@ void Localization::setLocale(std::string locale) {
 						SimpleLion::LocalizationString* ls = new SimpleLion::LocalizationString(name, value);
 						if(cat == NULL) {
 							int newSize = _fileSize+1;
-							SimpleLion::LocalizationEntry** newFile = new SimpleLion::LocalizationEntry[newSize];
+							SimpleLion::LocalizationEntry** newFile = new SimpleLion::LocalizationEntry*[newSize];
 							if(_file != NULL) {
 								for(int i = 0; i < _fileSize; i++) {
 									newFile[i] = _file[i];
@@ -433,7 +433,7 @@ void Localization::setLocale(std::string locale) {
 						}
 					}
 					name = "";
-					value = ""
+					value = "";
 				}
 			}
 		}
@@ -459,10 +459,10 @@ std::string Localization::query(std::string queryString) {
 					return msg;
 				} else {
 					if(cat != NULL) {
-						SimpleLion::LocalizationEntry *tmp = cat->getLocalizationEntryByName(parsed);
-						if(tmp->type() == "category") {
-							cat = tmp;
-						} else if(tmp->type() == "entry") {
+						SimpleLion::LocalizationEntry& tmp = cat->getLocalizationEntryByName(parsed);
+						if(tmp.type() == "category") {
+							cat = dynamic_cast<SimpleLion::LocalizationCategory*>(&tmp);
+						} else if(tmp.type() == "entry") {
 							std::string msg = "simplelion:err:localization_not_found: " + queryString;
 							return msg;
 						}
@@ -471,7 +471,7 @@ std::string Localization::query(std::string queryString) {
 						for(int j = 0; j < _fileSize; j++) {
 							SimpleLion::LocalizationEntry *tmp = _file[i];
 						if(tmp->type() == "category" && tmp->name() == parsed) {
-							cat = tmp;
+							cat = dynamic_cast<SimpleLion::LocalizationCategory*>(tmp);
 							found = true;
 							break;
 						}
@@ -492,9 +492,9 @@ std::string Localization::query(std::string queryString) {
 			return msg;
 		}
 		if(cat != NULL) {
-			SimpleLion::LocalizationEntry *tmp = cat->getLocalizationEntryByName(parsed);
-			if(tmp->type() == "string") {
-				return tmp->value();
+			SimpleLion::LocalizationEntry &tmp = cat->getLocalizationEntryByName(parsed);
+			if(tmp.type() == "string") {
+				return dynamic_cast<SimpleLion::LocalizationString&>(tmp).value();
 			} else {
 				std::string msg = "simplelion:err:translation_missing: " + queryString;
 				return msg;
@@ -502,8 +502,8 @@ std::string Localization::query(std::string queryString) {
 		} else {
 			SimpleLion::LocalizationEntry *tmp;
 			for(int i = 0; i < _fileSize; i++) {
-				if(_file[i]->name() == parsed && _file[i]->value() == "string") {
-					return _file[i]->value();
+				if(_file[i]->name() == parsed && _file[i]->type() == "string") {
+					return dynamic_cast<SimpleLion::LocalizationString*>(_file[i])->value();
 				}
 			}
 			std::string msg = "simplelion:err:translation_missing: " + queryString;
@@ -512,17 +512,17 @@ std::string Localization::query(std::string queryString) {
 	}
 }
 
-std::string* SimpleLion::localeList() {
+std::string* Localization::localeList() {
 	// "Open" the base directory.
 	boost::filesystem::directory_iterator begin(*_basepath);
 	boost::filesystem::directory_iterator end;
 	// Directory should not be empty, because we are loading stuff.
-	if(iter == end) {
+	if(begin == end) {
 		throw SimpleLion::FilesystemException("No files present!", _basepath->string());
 	}
 	// How many SLLF files are there in the directory?
 	_localesSize = 0;
-	for(boost::filesystem::directory_iterator iter = begin; iter != end; iter++) {
+	for(boost::filesystem::directory_iterator iter(*_basepath); iter != end; iter++) {
 		if((*iter).path().extension().string() == ".sllf") {
 			_localesSize++;
 		}
@@ -533,9 +533,9 @@ std::string* SimpleLion::localeList() {
 	// Store locale ids (the stem() returns that) into the array.
 	_locales = new std::string[_localesSize];
 	int i = 0;
-	for(boost::filesystem::directory_iterator iter = begin; iter != end; iter++) {
+	for(boost::filesystem::directory_iterator iter(*_basepath); iter != end; iter++) {
 		if((*iter).path().extension().string() == ".sllf") {
-			available_locales[i] = (*iter).path().stem().string();
+			_locales[i] = (*iter).path().stem().string();
 			i++;
 		}
 	}

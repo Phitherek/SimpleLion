@@ -1,0 +1,18 @@
+[test]
+Testowy string
+[test2]
+Kolejny testowy string
+{testcat}
+[test]
+Testowy string z testcat
+[test2]
+Kolejny testowy string z testcat
+{acat}
+[test]
+Testowy string z testcat -> acat
+{end}
+[test3]
+Testowy string z testcat po acat
+{end}
+[test3]
+Testowy globalny string po testcat

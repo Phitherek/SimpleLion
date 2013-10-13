@@ -1,0 +1,18 @@
+[test]
+Test string
+[test2]
+Another test string
+{testcat}
+[test]
+Test string from testcat
+[test2]
+Another test string from testcat
+{acat}
+[test]
+Test string from testcat -> acat
+{end}
+[test3]
+Test string from testcat after acat
+{end}
+[test3]
+Test global string after testcat
