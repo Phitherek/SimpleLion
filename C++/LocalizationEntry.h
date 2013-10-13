@@ -2,7 +2,7 @@
 #define _LOCALIZATIONENTRY_H
 #include <string>
 /// \file LocalizationEntry.h
-/// \brief A part of SimpleLion project - C++ module. Class that represents an entry in localization file.
+/// \brief A part of the SimpleLion project - C++ module. Class that represents an entry in localization file.
 /// \author Phitherek_
 /// \date 2013
 /// \version 0.1

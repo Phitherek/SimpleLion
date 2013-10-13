@@ -3,7 +3,7 @@
 #include "LocalizationEntry.h"
 #include <string>
 /// \file LocalizationCategory.h
-/// \brief A part of SimpleLion project - C++ module. Class that represents a category in localization file.
+/// \brief A part of the SimpleLion project - C++ module. Class that represents a category in localization file.
 /// \author Phitherek_
 /// \date 2013
 /// \version 0.1
