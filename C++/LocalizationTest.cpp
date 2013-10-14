@@ -32,9 +32,9 @@ int main() {
 			cout << "5) Exit test" << endl;
 			cout << "Select action: ";
 			cin >> action;
-			string locale;
-			string squery;
-			string* locales;
+			string locale = "";
+			string squery = "";
+			string* locales = NULL;
 			switch(action) {
 			case 1:
 				cout << "Enter locale code (e.g. en, pl etc.): ";

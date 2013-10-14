@@ -120,7 +120,14 @@ Localization::Localization(std::string path, std::string locale) {
 		std::string line;
 		lineno++;
 		while(c != '\n') {
-			line += c;
+			c = sllfin.get();
+			if(sllfin) {
+				if(c != '\n') {
+					line += c;
+				}
+			} else {
+				break;
+			}
 		}
 		if(sllfin) {
 			if(line[0] == '[') {
@@ -192,6 +199,7 @@ Localization::Localization(std::string path, std::string locale) {
 					}
 				}
 			} else {
+				value = line;
 				if(name == "") {
 					std::cout << "SLLF Parser: " << localepath.filename() << ":" << lineno <<  " WARNING: Skipping value of invalid/empty string declaration!" << std::endl;
 				} else {
@@ -270,6 +278,13 @@ Localization::~Localization() {
 }
 
 void Localization::setLocale(std::string locale) {
+	// Clear structures if necessary
+	if(_file != NULL) {
+		for(int i = 0; i < _fileSize; i++) {
+			delete _file[i];
+		}
+		delete[] _file;
+	}
 	// "Open" the base directory.
 	boost::filesystem::directory_iterator begin(*_basepath);
 	boost::filesystem::directory_iterator end;
@@ -333,11 +348,18 @@ void Localization::setLocale(std::string locale) {
 	std::string name = "", value = "";
 	int lineno = 0;
 	while(!sllfin.eof()) {
-		char c;
+		char c = ' ';
 		std::string line;
 		lineno++;
 		while(c != '\n') {
-			line += c;
+			c = sllfin.get();
+			if(sllfin) {
+				if(c != '\n') {
+					line += c;
+				}
+			} else {
+				break;
+			}
 		}
 		if(sllfin) {
 			if(line[0] == '[') {
@@ -409,6 +431,7 @@ void Localization::setLocale(std::string locale) {
 					}
 				}
 			} else {
+				value = line;
 				if(name == "") {
 					std::cout << "SLLF Parser: " << localepath.filename() << ":" << lineno <<  " WARNING: Skipping value of invalid/empty string declaration!" << std::endl;
 				} else {
@@ -469,7 +492,7 @@ std::string Localization::query(std::string queryString) {
 					} else {
 						bool found = false;
 						for(int j = 0; j < _fileSize; j++) {
-							SimpleLion::LocalizationEntry *tmp = _file[i];
+							SimpleLion::LocalizationEntry *tmp = _file[j];
 						if(tmp->type() == "category" && tmp->name() == parsed) {
 							cat = dynamic_cast<SimpleLion::LocalizationCategory*>(tmp);
 							found = true;
