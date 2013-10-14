@@ -1,0 +1,13 @@
+[test]
+[test2]
+{end}
+{cat1}
+[test3]
+{end}
+{ok}
+[test]
+This is ok
+{end}
+{end}
+[test4]
+This is also ok

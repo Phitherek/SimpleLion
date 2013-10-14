@@ -284,6 +284,8 @@ void Localization::setLocale(std::string locale) {
 			delete _file[i];
 		}
 		delete[] _file;
+		_file = NULL;
+		_fileSize = 0;
 	}
 	// "Open" the base directory.
 	boost::filesystem::directory_iterator begin(*_basepath);
@@ -536,6 +538,11 @@ std::string Localization::query(std::string queryString) {
 }
 
 std::string* Localization::localeList() {
+	if(_locales != NULL) {
+		delete[] _locales;
+		_locales = NULL;
+		_localesSize = 0;
+	}
 	// "Open" the base directory.
 	boost::filesystem::directory_iterator begin(*_basepath);
 	boost::filesystem::directory_iterator end;
