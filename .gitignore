@@ -5,3 +5,6 @@ C++/LocalizationCategoryTest
 C++/LocalizationTest
 C++/NoinputLocalizationTest
 C++/doxy/*
+C++/*.o
+C++/*.so
+C++/*.so*
