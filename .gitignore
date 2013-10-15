@@ -8,3 +8,4 @@ C++/doxy/*
 C++/*.o
 C++/*.so
 C++/*.so*
+Ruby/.rvmrc
