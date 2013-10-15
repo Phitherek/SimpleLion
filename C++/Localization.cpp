@@ -488,7 +488,7 @@ std::string Localization::query(std::string queryString) {
 						if(tmp.type() == "category") {
 							cat = dynamic_cast<SimpleLion::LocalizationCategory*>(&tmp);
 						} else if(tmp.type() == "entry") {
-							std::string msg = "simplelion:err:localization_not_found: " + queryString;
+							std::string msg = "simplelion:err:translation_missing: " + queryString;
 							return msg;
 						}
 					} else {
@@ -502,7 +502,7 @@ std::string Localization::query(std::string queryString) {
 						}
 						}
 						if(!found) {
-							std::string msg = "simplelion:err:localization_not_found: " + queryString;
+							std::string msg = "simplelion:err:translation_missing: " + queryString;
 							return msg;
 						}
 					}

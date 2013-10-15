@@ -11,3 +11,9 @@ This is ok
 {end}
 [test4]
 This is also ok
+[]
+Not good string!
+{}
+[notgood]
+Not good category!
+{end}
