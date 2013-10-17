@@ -9,3 +9,5 @@ C++/*.o
 C++/*.so
 C++/*.so*
 Ruby/.rvmrc
+Ruby/Gemfile.lock
+Ruby/coverage/*
