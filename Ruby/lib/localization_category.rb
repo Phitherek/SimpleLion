@@ -56,7 +56,7 @@ module SimpleLion
 		end
 		def getLocalizationEntryByName name
 			@subentries.each do |subentry|
-				if subentry.name == name
+				if subentry.name.to_s == name.to_s
 					return subentry
 				end
 			end
@@ -64,7 +64,7 @@ module SimpleLion
 		end
 		def removeLocalizationEntryByName name
 			@subentries.each do |subentry|
-				if subentry.name == name
+				if subentry.name.to_s == name.to_s
 					@subentries.delete(subentry)
 					return true
 				end
@@ -72,7 +72,11 @@ module SimpleLion
 			return false
 		end
 		def name
-			@name.to_sym
+			if @name != nil
+				@name.to_sym
+			else
+				nil
+			end
 		end
 		def resetLocalizationEntryIterator
 			@subentriesIterator = -1

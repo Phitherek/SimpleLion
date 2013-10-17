@@ -112,4 +112,87 @@ describe SimpleLion::LocalizationCategory do
 			c.removeLocalizationEntry(2).should be_false
 		end
 	end
+	describe "getLocalizationEntryByName" do
+		it 'should return relevant subentry' do
+			c = SimpleLion::LocalizationCategory.new(:testcat)
+			s = SimpleLion::LocalizationString.new(:test, "Test string!")
+			c2 = SimpleLion::LocalizationCategory.new(:acat)
+			c.addLocalizationEntry(s).should be_true
+			c.addLocalizationEntry(c2).should be_true
+			c.getLocalizationEntryByName(:test).should eq(s)
+			c.getLocalizationEntryByName(:acat).should eq(c2)
+		end
+		it 'should return nil when subentry not found' do
+			c = SimpleLion::LocalizationCategory.new(:testcat)
+			s = SimpleLion::LocalizationString.new(:test, "Test string!")
+			c2 = SimpleLion::LocalizationCategory.new(:acat)
+			c.addLocalizationEntry(s).should be_true
+			c.addLocalizationEntry(c2).should be_true
+			c.getLocalizationEntryByName(:sth).should be_nil
+		end
+	end
+	describe "removeLocalizationEntryByName" do
+		it 'should remove relevant subentry' do
+			c = SimpleLion::LocalizationCategory.new(:testcat)
+			s = SimpleLion::LocalizationString.new(:test, "Test string!")
+			c2 = SimpleLion::LocalizationCategory.new(:acat)
+			c.addLocalizationEntry(s).should be_true
+			c.addLocalizationEntry(c2).should be_true
+			c.removeLocalizationEntryByName(:test).should be_true
+			c.getLocalizationEntryByName(:test).should be_nil
+		end
+		it 'should return false when subentry not found' do
+			c = SimpleLion::LocalizationCategory.new(:testcat)
+			s = SimpleLion::LocalizationString.new(:test, "Test string!")
+			c2 = SimpleLion::LocalizationCategory.new(:acat)
+			c.addLocalizationEntry(s).should be_true
+			c.addLocalizationEntry(c2).should be_true
+			c.removeLocalizationEntryByName(:sth).should be_false
+		end
+	end
+	describe "resetLocalizationEntryIterator" do
+		it 'should set subentriesEnd when array is empty' do
+			c = SimpleLion::LocalizationCategory.new(:testcat)
+			c.resetLocalizationEntryIterator
+			c.localizationEntriesAtEnd?.should be_true
+		end
+		it 'should not set subentriesEnd when array is not empty' do
+			c = SimpleLion::LocalizationCategory.new(:testcat)
+			s = SimpleLion::LocalizationString.new(:test, "Test string!")
+			c2 = SimpleLion::LocalizationCategory.new(:acat)
+			c.addLocalizationEntry(s).should be_true
+			c.addLocalizationEntry(c2).should be_true
+			c.resetLocalizationEntryIterator
+			c.localizationEntriesAtEnd?.should be_false
+		end
+	end
+	describe "name" do
+		it 'should return corect name' do
+			c = SimpleLion::LocalizationCategory.new
+			c.name.should be_nil
+			c2 = SimpleLion::LocalizationCategory.new(:testcat)
+			c2.name.should eq(:testcat)
+		end
+	end
+	describe "setName" do
+		it 'should correctly set name' do
+			c = SimpleLion::LocalizationCategory.new
+			c.setName(:testcat)
+			c.name.should eq(:testcat)
+		end
+	end
+	describe "toSLLF" do
+		it 'should return correct SLLF format' do
+			c = SimpleLion::LocalizationCategory.new(:testcat)
+			s = SimpleLion::LocalizationString.new(:test, "Test string!")
+			c2 = SimpleLion::LocalizationCategory.new(:acat)
+			c.addLocalizationEntry(s).should be_true
+			c.addLocalizationEntry(c2).should be_true
+			c.toSLLF.should eq("{testcat}\n[test]\nTest string!\n{acat}\n{end}\n{end}\n")
+		end
+		it 'should return nil if category invalid' do
+			c = SimpleLion::LocalizationCategory.new
+			c.toSLLF.should be_nil
+		end
+	end
 end
