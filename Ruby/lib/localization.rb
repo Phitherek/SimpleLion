@@ -2,8 +2,31 @@ require 'localization_string'
 require 'localization_category'
 require 'exceptions'
 
+##
+# ==The SimpleLion module for Ruby
+#
+# SimpleLion is a multi-language, simple localization framework inspired by Ruby on Rails localization engine. This is a language-specific module for Ruby.
+#
+# The basic information on the project and wiki can be (for now) found at http://redmine.phitherek.mooo.com and you can also contribute for the project there!
+
 module SimpleLion
+	
+	##
+	# This is the main class of the SimpleLion module for Ruby. It handles parsing, storing and querying data from SLLF files.
+	
 	class Localization
+		
+		##
+		# This constructor initializes Localization object with data from given +path+ and +locale+
+		#
+		# +locale+ can be nil, only list of available locales is loaded then
+		#
+		# It raises FilesystemException when there is a problem with the directory (it can' t open or create it or it has no locale files inside)
+		#
+		# It raises FileException when the selected locale file does not exist
+		#
+		# The SLLF Parser inside the constructor outputs warnings if the SLLF file format is wrong in some place, it also outputs the line number where the problem exists
+		
 		def initialize path, locale=nil
 			if File.directory?(path)
 				@basepath = path
@@ -108,6 +131,16 @@ module SimpleLion
 				end
 			end
 		end
+		
+		##
+		# This method loads or changes locale in the Localization object. The SLLF locale file is loaded, parsed and stored inside the object
+		#
+		# It raises FilesystemException when there are no locales in the base directory of the Localization object
+		#
+		# It raises FileException when the selected locale file does not exist
+		#
+		# The SLLF Parser inside the method outputs warnings if the SLLF file format is wrong in some place, it also outputs the line number where the problem exists
+		
 		def setLocale locale
 			@locales = []
 			basedir = Dir.new(@basepath)
@@ -203,6 +236,17 @@ module SimpleLion
 			end
 		end
 		
+		##
+		# This method queries the Localization object for the localized value of the string according to +queryString+
+		#
+		# The queryString has format: string_name or category_name.category_name.(...).string_name - (...) means n more category names
+		#
+		# It returns the value of the string found with +queryString+ in current locale or error message:
+		# * simplelion:err:invalid_query - if there is a problem with the query
+		# * simplelion:err:no_locale - if no locale is loaded
+		# * simplelion:err:translation_missing - if no string could be found that matches given +queryString+
+		# These error messages are returned as a string value, so they will eventually be displayed in the place of missing/invalid localized strings
+		
 		def query queryString
 			if queryString == nil
 				return "simplelion:err:invalid_query: nil"
@@ -261,6 +305,13 @@ module SimpleLion
 			end
 		end
 		
+		##
+		# This method returns an array of available locale codes
+		#
+		# Every run of this method refreshes the available locale list and so its output is always up-to-date
+		#
+		# It can also return empty list, but it should not happen because the constructor takes care of locale presence
+		
 		def localeList
 			@locales = []
 			basedir = Dir.new(@basepath)
@@ -271,6 +322,11 @@ module SimpleLion
 			end
 			@locales
 		end
+		
+		##
+		# This method outputs the Localization in the SLLF format - it is identical that parsed file unless the Localization object has been modified in some way in the script
+		#
+		# It returns nil if no locale file has been loaded
 		
 		def toSLLF
 			if @file == nil || @file.empty?

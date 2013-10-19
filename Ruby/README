@@ -1,3 +1,15 @@
 SimpleLion - A simple, multi-language localization framework.
 
 This is the Ruby-specific SimpleLion module.
+
+Project tracking and basic information: http://redmine.phitherek.mooo.com/projects/simplelion
+Documentation for the module: http://phitherek.mooo.com/rdoc/simplelion-ruby/SimpleLion.html
+Coverage for the module: http://phitherek.mooo.com/coverage/simplelion-ruby/
+
+Installation - add to your Gemfile:
+gem 'simplelion-ruby'
+or run:
+gem install simplelion-ruby
+
+Usage:
+require 'simplelion-ruby'
