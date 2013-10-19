@@ -11,3 +11,5 @@ C++/*.so*
 Ruby/.rvmrc
 Ruby/Gemfile.lock
 Ruby/coverage/*
+Ruby/doc/*
+Ruby/*.gem
