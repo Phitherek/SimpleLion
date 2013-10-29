@@ -5,4 +5,5 @@
 /// \date 2013
 /// \version 0.1
 include("localization_string.inc.php");
+include("localization_category.inc.php");
 ?>
