@@ -1,0 +1,107 @@
+\hypertarget{class_simple_lion_1_1_localization}{\section{Localization Class Reference}
+\label{class_simple_lion_1_1_localization}\index{Localization@{Localization}}
+}
+
+
+A class representing the \hyperlink{class_simple_lion_1_1_localization}{Localization} engine.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_simple_lion_1_1_localization_aff9c6ae8a009c4a2c42523c416af6f21}{\-\_\-\-\_\-construct} (\$path, \$locale=null)
+\item 
+\hyperlink{class_simple_lion_1_1_localization_a1bef7c51e9f6a97840f016a8f0a615ae}{set\-Locale} (\$locale)
+\item 
+\hyperlink{class_simple_lion_1_1_localization_abb5a777a3f4217d9473883e80cae4b53}{query} (\$query\-String)
+\item 
+\hyperlink{class_simple_lion_1_1_localization_a357800ef35be75a58766fdb86090211b}{locale\-List} ()
+\item 
+\hyperlink{class_simple_lion_1_1_localization_a129b22867863a1b34ffd83448a8546bd}{to\-S\-L\-L\-F} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A class representing the \hyperlink{class_simple_lion_1_1_localization}{Localization} engine. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_simple_lion_1_1_localization_aff9c6ae8a009c4a2c42523c416af6f21}{\index{Simple\-Lion\-::\-Localization@{Simple\-Lion\-::\-Localization}!\-\_\-\-\_\-construct@{\-\_\-\-\_\-construct}}
+\index{\-\_\-\-\_\-construct@{\-\_\-\-\_\-construct}!SimpleLion::Localization@{Simple\-Lion\-::\-Localization}}
+\subsubsection[{\-\_\-\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}\-\_\-\-\_\-construct (
+\begin{DoxyParamCaption}
+\item[{}]{\$path, }
+\item[{}]{\$locale = {\ttfamily null}}
+\end{DoxyParamCaption}
+)}}\label{class_simple_lion_1_1_localization_aff9c6ae8a009c4a2c42523c416af6f21}
+$<$A constructor that checks given path for locales, loads locale list and optionally opens and parses the specified locale. Throws \hyperlink{class_simple_lion_1_1_file_exception}{File\-Exception} and \hyperlink{class_simple_lion_1_1_filesystem_exception}{Filesystem\-Exception} on errors.
+
+$<$ 
+\begin{DoxyParams}{Parameters}
+{\em \$path} & A path to locales. \\
+\hline
+{\em \$locale} & Optional locale to open and parse. Can be null. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_simple_lion_1_1_localization_a357800ef35be75a58766fdb86090211b}{\index{Simple\-Lion\-::\-Localization@{Simple\-Lion\-::\-Localization}!locale\-List@{locale\-List}}
+\index{locale\-List@{locale\-List}!SimpleLion::Localization@{Simple\-Lion\-::\-Localization}}
+\subsubsection[{locale\-List}]{\setlength{\rightskip}{0pt plus 5cm}locale\-List (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_simple_lion_1_1_localization_a357800ef35be75a58766fdb86090211b}
+$<$A method that refreshes and returns list of currently available locales.
+
+$<$ \begin{DoxyReturn}{Returns}
+Array of currently available locale codes. 
+\end{DoxyReturn}
+\hypertarget{class_simple_lion_1_1_localization_abb5a777a3f4217d9473883e80cae4b53}{\index{Simple\-Lion\-::\-Localization@{Simple\-Lion\-::\-Localization}!query@{query}}
+\index{query@{query}!SimpleLion::Localization@{Simple\-Lion\-::\-Localization}}
+\subsubsection[{query}]{\setlength{\rightskip}{0pt plus 5cm}query (
+\begin{DoxyParamCaption}
+\item[{}]{\$query\-String}
+\end{DoxyParamCaption}
+)}}\label{class_simple_lion_1_1_localization_abb5a777a3f4217d9473883e80cae4b53}
+$<$A method that returns localized string value according to query\-String or error message (to fit in the bad translation' s place).
+
+$<$ 
+\begin{DoxyParams}{Parameters}
+{\em query\-String} & A query string, formatted this way\-: string\-\_\-name or category\-\_\-name.\-category\-\_\-name.(...).string\-\_\-name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Localized string value or error as string. 
+\end{DoxyReturn}
+\hypertarget{class_simple_lion_1_1_localization_a1bef7c51e9f6a97840f016a8f0a615ae}{\index{Simple\-Lion\-::\-Localization@{Simple\-Lion\-::\-Localization}!set\-Locale@{set\-Locale}}
+\index{set\-Locale@{set\-Locale}!SimpleLion::Localization@{Simple\-Lion\-::\-Localization}}
+\subsubsection[{set\-Locale}]{\setlength{\rightskip}{0pt plus 5cm}set\-Locale (
+\begin{DoxyParamCaption}
+\item[{}]{\$locale}
+\end{DoxyParamCaption}
+)}}\label{class_simple_lion_1_1_localization_a1bef7c51e9f6a97840f016a8f0a615ae}
+$<$A method that opens and parsers the specified locale. Throws \hyperlink{class_simple_lion_1_1_file_exception}{File\-Exception} and \hyperlink{class_simple_lion_1_1_filesystem_exception}{Filesystem\-Exception} on errors.
+
+$<$ 
+\begin{DoxyParams}{Parameters}
+{\em \$locale} & Locale to open and parse. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_simple_lion_1_1_localization_a129b22867863a1b34ffd83448a8546bd}{\index{Simple\-Lion\-::\-Localization@{Simple\-Lion\-::\-Localization}!to\-S\-L\-L\-F@{to\-S\-L\-L\-F}}
+\index{to\-S\-L\-L\-F@{to\-S\-L\-L\-F}!SimpleLion::Localization@{Simple\-Lion\-::\-Localization}}
+\subsubsection[{to\-S\-L\-L\-F}]{\setlength{\rightskip}{0pt plus 5cm}to\-S\-L\-L\-F (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_simple_lion_1_1_localization_a129b22867863a1b34ffd83448a8546bd}
+$<$A method that returns the \hyperlink{class_simple_lion_1_1_localization}{Localization} object in S\-L\-L\-F format.
+
+$<$ \begin{DoxyReturn}{Returns}
+\hyperlink{class_simple_lion_1_1_localization}{Localization} object in S\-L\-L\-F format, as string. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{localization_8inc_8php}{localization.\-inc.\-php}\end{DoxyCompactItemize}

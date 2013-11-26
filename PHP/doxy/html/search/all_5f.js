@@ -1,0 +1,5 @@
+var searchData=
+[
+  ['_5f_5fconstruct',['__construct',['../class_simple_lion_1_1_file_exception.html#a87f2f2594d5a2732de3559816137cccb',1,'SimpleLion\FileException\__construct()'],['../class_simple_lion_1_1_filesystem_exception.html#a721bfc707580bfe92e1da7bc2a5be13c',1,'SimpleLion\FilesystemException\__construct()'],['../class_simple_lion_1_1_localization.html#aff9c6ae8a009c4a2c42523c416af6f21',1,'SimpleLion\Localization\__construct()'],['../class_simple_lion_1_1_localization_category.html#aa7843dae8184afc5ab27814533e12ba8',1,'SimpleLion\LocalizationCategory\__construct()'],['../class_simple_lion_1_1_localization_string.html#a0a78b62dd316bf5e63a3f5a5f43092b3',1,'SimpleLion\LocalizationString\__construct()']]],
+  ['_5f_5ftostring',['__toString',['../class_simple_lion_1_1_file_exception.html#a7516ca30af0db3cdbf9a7739b48ce91d',1,'SimpleLion\FileException\__toString()'],['../class_simple_lion_1_1_filesystem_exception.html#a7516ca30af0db3cdbf9a7739b48ce91d',1,'SimpleLion\FilesystemException\__toString()']]]
+];

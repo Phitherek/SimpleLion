@@ -1,0 +1,231 @@
+\hypertarget{class_simple_lion_1_1_localization_category}{\section{Localization\-Category Class Reference}
+\label{class_simple_lion_1_1_localization_category}\index{Localization\-Category@{Localization\-Category}}
+}
+
+
+A class that represents category grouping localization strings.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_simple_lion_1_1_localization_category_aa7843dae8184afc5ab27814533e12ba8}{\-\_\-\-\_\-construct} (\$\hyperlink{class_simple_lion_1_1_localization_category_a4b516aaa5fa38da4fed24ab6001627e2}{name}=null)
+\item 
+\hyperlink{class_simple_lion_1_1_localization_category_abb9f0d6adf1eb9b3b55712056861a247}{valid} ()
+\item 
+\hyperlink{class_simple_lion_1_1_localization_category_a088bc0c650ebd5e60ba88b9edb572ae0}{add\-Localization\-Entry} (\$entry)
+\item 
+\hyperlink{class_simple_lion_1_1_localization_category_aec06c962021b0422399570806aa60b69}{get\-Next\-Localization\-Entry} ()
+\item 
+\hyperlink{class_simple_lion_1_1_localization_category_a32a9975a699b2a415f251389c851c82a}{get\-Localization\-Entry\-At} (\$idx)
+\item 
+\hyperlink{class_simple_lion_1_1_localization_category_a4e001554d3486c0ed72c5fd912541724}{remove\-Localization\-Entry} (\$idx)
+\item 
+\hyperlink{class_simple_lion_1_1_localization_category_a0897c03f1447505b6b1c9251c90c6ac3}{get\-Localization\-Entry\-By\-Name} (\$\hyperlink{class_simple_lion_1_1_localization_category_a4b516aaa5fa38da4fed24ab6001627e2}{name})
+\item 
+\hyperlink{class_simple_lion_1_1_localization_category_a2e8695b4ef92eb532964f98a6957594f}{remove\-Localization\-Entry\-By\-Name} (\$\hyperlink{class_simple_lion_1_1_localization_category_a4b516aaa5fa38da4fed24ab6001627e2}{name})
+\item 
+\hyperlink{class_simple_lion_1_1_localization_category_a4b516aaa5fa38da4fed24ab6001627e2}{name} ()
+\item 
+\hyperlink{class_simple_lion_1_1_localization_category_aedfa75bca162c2d66098e1fac13224eb}{reset\-Localization\-Entry\-Iterator} ()
+\item 
+\hyperlink{class_simple_lion_1_1_localization_category_a9d13e88319d0c8d8802e3fb839fddf13}{localization\-Entries\-At\-End} ()
+\item 
+\hyperlink{class_simple_lion_1_1_localization_category_a2fe666694997d047711d7653eca2f132}{set\-Name} (\$\hyperlink{class_simple_lion_1_1_localization_category_a4b516aaa5fa38da4fed24ab6001627e2}{name})
+\item 
+\hyperlink{class_simple_lion_1_1_localization_category_a129b22867863a1b34ffd83448a8546bd}{to\-S\-L\-L\-F} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A class that represents category grouping localization strings. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_simple_lion_1_1_localization_category_aa7843dae8184afc5ab27814533e12ba8}{\index{Simple\-Lion\-::\-Localization\-Category@{Simple\-Lion\-::\-Localization\-Category}!\-\_\-\-\_\-construct@{\-\_\-\-\_\-construct}}
+\index{\-\_\-\-\_\-construct@{\-\_\-\-\_\-construct}!SimpleLion::LocalizationCategory@{Simple\-Lion\-::\-Localization\-Category}}
+\subsubsection[{\-\_\-\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}\-\_\-\-\_\-construct (
+\begin{DoxyParamCaption}
+\item[{}]{\$name = {\ttfamily null}}
+\end{DoxyParamCaption}
+)}}\label{class_simple_lion_1_1_localization_category_aa7843dae8184afc5ab27814533e12ba8}
+$<$A constructor from name.
+
+$<$ 
+\begin{DoxyParams}{Parameters}
+{\em \$name} & Name of the category, can be null but then the category will be invalid. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_simple_lion_1_1_localization_category_a088bc0c650ebd5e60ba88b9edb572ae0}{\index{Simple\-Lion\-::\-Localization\-Category@{Simple\-Lion\-::\-Localization\-Category}!add\-Localization\-Entry@{add\-Localization\-Entry}}
+\index{add\-Localization\-Entry@{add\-Localization\-Entry}!SimpleLion::LocalizationCategory@{Simple\-Lion\-::\-Localization\-Category}}
+\subsubsection[{add\-Localization\-Entry}]{\setlength{\rightskip}{0pt plus 5cm}add\-Localization\-Entry (
+\begin{DoxyParamCaption}
+\item[{}]{\$entry}
+\end{DoxyParamCaption}
+)}}\label{class_simple_lion_1_1_localization_category_a088bc0c650ebd5e60ba88b9edb572ae0}
+$<$A function that adds a string or category into the category object.
+
+$<$ 
+\begin{DoxyParams}{Parameters}
+{\em \$entry} & A string or category to insert into the category object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the object was inserted, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{class_simple_lion_1_1_localization_category_a32a9975a699b2a415f251389c851c82a}{\index{Simple\-Lion\-::\-Localization\-Category@{Simple\-Lion\-::\-Localization\-Category}!get\-Localization\-Entry\-At@{get\-Localization\-Entry\-At}}
+\index{get\-Localization\-Entry\-At@{get\-Localization\-Entry\-At}!SimpleLion::LocalizationCategory@{Simple\-Lion\-::\-Localization\-Category}}
+\subsubsection[{get\-Localization\-Entry\-At}]{\setlength{\rightskip}{0pt plus 5cm}get\-Localization\-Entry\-At (
+\begin{DoxyParamCaption}
+\item[{}]{\$idx}
+\end{DoxyParamCaption}
+)}}\label{class_simple_lion_1_1_localization_category_a32a9975a699b2a415f251389c851c82a}
+$<$A function that returns string or subcategory from specific index in the subentries array.
+
+$<$ 
+\begin{DoxyParams}{Parameters}
+{\em \$idx} & Index of the entry. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Specified entry or null. 
+\end{DoxyReturn}
+\hypertarget{class_simple_lion_1_1_localization_category_a0897c03f1447505b6b1c9251c90c6ac3}{\index{Simple\-Lion\-::\-Localization\-Category@{Simple\-Lion\-::\-Localization\-Category}!get\-Localization\-Entry\-By\-Name@{get\-Localization\-Entry\-By\-Name}}
+\index{get\-Localization\-Entry\-By\-Name@{get\-Localization\-Entry\-By\-Name}!SimpleLion::LocalizationCategory@{Simple\-Lion\-::\-Localization\-Category}}
+\subsubsection[{get\-Localization\-Entry\-By\-Name}]{\setlength{\rightskip}{0pt plus 5cm}get\-Localization\-Entry\-By\-Name (
+\begin{DoxyParamCaption}
+\item[{}]{\$name}
+\end{DoxyParamCaption}
+)}}\label{class_simple_lion_1_1_localization_category_a0897c03f1447505b6b1c9251c90c6ac3}
+$<$A function that returns string or subcategory with specific name..
+
+$<$ 
+\begin{DoxyParams}{Parameters}
+{\em \$name} & Name of the entry. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Specified entry or null. 
+\end{DoxyReturn}
+\hypertarget{class_simple_lion_1_1_localization_category_aec06c962021b0422399570806aa60b69}{\index{Simple\-Lion\-::\-Localization\-Category@{Simple\-Lion\-::\-Localization\-Category}!get\-Next\-Localization\-Entry@{get\-Next\-Localization\-Entry}}
+\index{get\-Next\-Localization\-Entry@{get\-Next\-Localization\-Entry}!SimpleLion::LocalizationCategory@{Simple\-Lion\-::\-Localization\-Category}}
+\subsubsection[{get\-Next\-Localization\-Entry}]{\setlength{\rightskip}{0pt plus 5cm}get\-Next\-Localization\-Entry (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_simple_lion_1_1_localization_category_aec06c962021b0422399570806aa60b69}
+$<$A function that returns next string or subcategory from category object.
+
+$<$ \begin{DoxyReturn}{Returns}
+Next string or subcategory from category object or null if reached end of the arrray. 
+\end{DoxyReturn}
+\hypertarget{class_simple_lion_1_1_localization_category_a9d13e88319d0c8d8802e3fb839fddf13}{\index{Simple\-Lion\-::\-Localization\-Category@{Simple\-Lion\-::\-Localization\-Category}!localization\-Entries\-At\-End@{localization\-Entries\-At\-End}}
+\index{localization\-Entries\-At\-End@{localization\-Entries\-At\-End}!SimpleLion::LocalizationCategory@{Simple\-Lion\-::\-Localization\-Category}}
+\subsubsection[{localization\-Entries\-At\-End}]{\setlength{\rightskip}{0pt plus 5cm}localization\-Entries\-At\-End (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_simple_lion_1_1_localization_category_a9d13e88319d0c8d8802e3fb839fddf13}
+$<$A function that returns if the iterator of the subentries array has reached its end.
+
+$<$ \begin{DoxyReturn}{Returns}
+True if the iterator of the subentries array has reached its end, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{class_simple_lion_1_1_localization_category_a4b516aaa5fa38da4fed24ab6001627e2}{\index{Simple\-Lion\-::\-Localization\-Category@{Simple\-Lion\-::\-Localization\-Category}!name@{name}}
+\index{name@{name}!SimpleLion::LocalizationCategory@{Simple\-Lion\-::\-Localization\-Category}}
+\subsubsection[{name}]{\setlength{\rightskip}{0pt plus 5cm}name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_simple_lion_1_1_localization_category_a4b516aaa5fa38da4fed24ab6001627e2}
+$<$A function that returns name of the category.
+
+$<$ \begin{DoxyReturn}{Returns}
+Name of the category or null if the category is not valid. 
+\end{DoxyReturn}
+\hypertarget{class_simple_lion_1_1_localization_category_a4e001554d3486c0ed72c5fd912541724}{\index{Simple\-Lion\-::\-Localization\-Category@{Simple\-Lion\-::\-Localization\-Category}!remove\-Localization\-Entry@{remove\-Localization\-Entry}}
+\index{remove\-Localization\-Entry@{remove\-Localization\-Entry}!SimpleLion::LocalizationCategory@{Simple\-Lion\-::\-Localization\-Category}}
+\subsubsection[{remove\-Localization\-Entry}]{\setlength{\rightskip}{0pt plus 5cm}remove\-Localization\-Entry (
+\begin{DoxyParamCaption}
+\item[{}]{\$idx}
+\end{DoxyParamCaption}
+)}}\label{class_simple_lion_1_1_localization_category_a4e001554d3486c0ed72c5fd912541724}
+$<$A function that removes a string or subcategory from specific index in the subentries array.
+
+$<$ 
+\begin{DoxyParams}{Parameters}
+{\em \$idx} & Index of the entry. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the entry was removed, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{class_simple_lion_1_1_localization_category_a2e8695b4ef92eb532964f98a6957594f}{\index{Simple\-Lion\-::\-Localization\-Category@{Simple\-Lion\-::\-Localization\-Category}!remove\-Localization\-Entry\-By\-Name@{remove\-Localization\-Entry\-By\-Name}}
+\index{remove\-Localization\-Entry\-By\-Name@{remove\-Localization\-Entry\-By\-Name}!SimpleLion::LocalizationCategory@{Simple\-Lion\-::\-Localization\-Category}}
+\subsubsection[{remove\-Localization\-Entry\-By\-Name}]{\setlength{\rightskip}{0pt plus 5cm}remove\-Localization\-Entry\-By\-Name (
+\begin{DoxyParamCaption}
+\item[{}]{\$name}
+\end{DoxyParamCaption}
+)}}\label{class_simple_lion_1_1_localization_category_a2e8695b4ef92eb532964f98a6957594f}
+$<$A function that removes string or subcategory with specific name..
+
+$<$ 
+\begin{DoxyParams}{Parameters}
+{\em \$name} & Name of the entry. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the entry was removed, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{class_simple_lion_1_1_localization_category_aedfa75bca162c2d66098e1fac13224eb}{\index{Simple\-Lion\-::\-Localization\-Category@{Simple\-Lion\-::\-Localization\-Category}!reset\-Localization\-Entry\-Iterator@{reset\-Localization\-Entry\-Iterator}}
+\index{reset\-Localization\-Entry\-Iterator@{reset\-Localization\-Entry\-Iterator}!SimpleLion::LocalizationCategory@{Simple\-Lion\-::\-Localization\-Category}}
+\subsubsection[{reset\-Localization\-Entry\-Iterator}]{\setlength{\rightskip}{0pt plus 5cm}reset\-Localization\-Entry\-Iterator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_simple_lion_1_1_localization_category_aedfa75bca162c2d66098e1fac13224eb}
+$<$ A function, that resets iterator of the subentries array. \hypertarget{class_simple_lion_1_1_localization_category_a2fe666694997d047711d7653eca2f132}{\index{Simple\-Lion\-::\-Localization\-Category@{Simple\-Lion\-::\-Localization\-Category}!set\-Name@{set\-Name}}
+\index{set\-Name@{set\-Name}!SimpleLion::LocalizationCategory@{Simple\-Lion\-::\-Localization\-Category}}
+\subsubsection[{set\-Name}]{\setlength{\rightskip}{0pt plus 5cm}set\-Name (
+\begin{DoxyParamCaption}
+\item[{}]{\$name}
+\end{DoxyParamCaption}
+)}}\label{class_simple_lion_1_1_localization_category_a2fe666694997d047711d7653eca2f132}
+$<$A function that sets name of the category.
+
+$<$ 
+\begin{DoxyParams}{Parameters}
+{\em \$name} & New name of the category. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_simple_lion_1_1_localization_category_a129b22867863a1b34ffd83448a8546bd}{\index{Simple\-Lion\-::\-Localization\-Category@{Simple\-Lion\-::\-Localization\-Category}!to\-S\-L\-L\-F@{to\-S\-L\-L\-F}}
+\index{to\-S\-L\-L\-F@{to\-S\-L\-L\-F}!SimpleLion::LocalizationCategory@{Simple\-Lion\-::\-Localization\-Category}}
+\subsubsection[{to\-S\-L\-L\-F}]{\setlength{\rightskip}{0pt plus 5cm}to\-S\-L\-L\-F (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_simple_lion_1_1_localization_category_a129b22867863a1b34ffd83448a8546bd}
+$<$A function that returns a category object in S\-L\-L\-F format.
+
+$<$ \begin{DoxyReturn}{Returns}
+S\-L\-L\-F representation of the object or null if object is not valid. 
+\end{DoxyReturn}
+\hypertarget{class_simple_lion_1_1_localization_category_abb9f0d6adf1eb9b3b55712056861a247}{\index{Simple\-Lion\-::\-Localization\-Category@{Simple\-Lion\-::\-Localization\-Category}!valid@{valid}}
+\index{valid@{valid}!SimpleLion::LocalizationCategory@{Simple\-Lion\-::\-Localization\-Category}}
+\subsubsection[{valid}]{\setlength{\rightskip}{0pt plus 5cm}valid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_simple_lion_1_1_localization_category_abb9f0d6adf1eb9b3b55712056861a247}
+$<$A function that returns if the category object is valid.
+
+$<$ \begin{DoxyReturn}{Returns}
+True if the category object is valid -\/ its name must be non-\/empty -\/ and false otherwise. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{localization__category_8inc_8php}{localization\-\_\-category.\-inc.\-php}\end{DoxyCompactItemize}
