@@ -6,4 +6,6 @@
 /// \version 0.1
 include("localization_string.inc.php");
 include("localization_category.inc.php");
+include("localization.inc.php");
+include("exceptions.inc.php");
 ?>

@@ -11,44 +11,46 @@ namespace SimpleLion;
 
 /// \class FileException
 /// \brief An exception to be thrown on file error.
-class FileException extends Exception {
+class FileException extends \Exception {
 	private $filepath; ///< A path to the file where error occured.
 	private $msg; ///< Error message.
-	function __initialize($filepath, $msg) { ///< \brief A constructor from file path and error message.
+	function __construct($filepath, $msg) { ///< \brief A constructor from file path and error message.
 	///< \param $filepath A path to the file where error occured.
 	///< \param $msg Error message.
 		$this->filepath = $filepath;
 		$this->msg = $msg;
+		parent::__construct($msg, 0);
 	}
 	
-	function getMessage() { ///< \brief A function that returns error message.
+	function __toString() { ///< \brief A function that returns error message.
 	///< \return Error message with file path.
 		$ret = "";
-		$ret .= $filepath;
+		$ret .= $this->filepath;
 		$ret .= ": ";
-		$ret .= $msg;
+		$ret .= $this->msg;
 		return $ret;
 	}
 }
 
 /// \class FilesystemException
 /// \brief An exception to be thrown on directory error.
-class FilesystemException extends Exception {
+class FilesystemException extends \Exception {
 	private $dirpath; ///< A path to the directory where error occured.
 	private $msg; ///< Error message.
-	function __initialize($dirpath, $msg) { ///< \brief A constructor from path and error message.
+	function __construct($dirpath, $msg) { ///< \brief A constructor from path and error message.
 	///< \param $dirpath A path to where error occured.
 	///< \param $msg Error message.
 		$this->filepath = $dirpath;
 		$this->msg = $msg;
+		parent::__construct($msg, 0);
 	}
 	
-	function getMessage() { ///< \brief A function that returns error message.
+	function __toString() { ///< \brief A function that returns error message.
 	///< \return Error message with path.
 		$ret = "";
-		$ret .= $dirpath;
+		$ret .= $this->dirpath;
 		$ret .= ": ";
-		$ret .= $msg;
+		$ret .= $this->msg;
 		return $ret;
 	}
 }

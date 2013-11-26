@@ -19,7 +19,7 @@ class Localization {
 	private $locales=array();
 	private $locale=null;
 	private $file=array();
-	function __initialize($path, $locale=null) { ///< \brief A constructor that checks given path for locales, loads locale list and optionally opens and parses the specified locale. Throws FileException and FilesystemException on errors.
+	function __construct($path, $locale=null) { ///< \brief A constructor that checks given path for locales, loads locale list and optionally opens and parses the specified locale. Throws FileException and FilesystemException on errors.
 	///< \param $path A path to locales.
 	///< \param $locale Optional locale to open and parse. Can be null.
 		if(is_dir($path)) {
@@ -35,14 +35,14 @@ class Localization {
 			throw new FilesystemException($this->basepath, "Cannot open the directory!");
 		}
 		foreach ($dir as $file) {
-			if(is_file($basepath."/".$file) && preg_split($file, ".")[1] == "sllf") {
+			if(is_file($this->basepath."/".$file) && explode(".", $file)[1] == "sllf") {
 				array_push($this->locales, basename($file, ".sllf"));
 			}
 		}
 		if(empty($this->locales)) {
 			throw new FilesystemException($this->basepath, "No SLLF files present in the directory!");
 		}
-		if(locale != null) {
+		if($locale != null) {
 			$found=false;
 			foreach($this->locales as $arrlocale) {
 				if($locale == $arrlocale) {
@@ -56,23 +56,24 @@ class Localization {
 			$this->locale = $locale;
 			$this->file = array();
 			$filepath = $this->basepath."/".$locale.".sllf";
-			$fp = fopen($filepath, "w");
+			$fp = fopen($filepath, "r");
 			$name = "";
 			$value = "";
 			$category = null;
 			$categories = array();
 			$i = 0;
 			do {
-				$line = trim(fgets($fp));
+				$line = fgets($fp);
 				if($line != false) {
+					$line = trim($line);
 					$i++;
 					if($line[0] == '[') {
 						if($name != "") {
 							print "SLLF Parser: ".basename($filepath).":".$i." WARNING: Not adding previous string because found the beginning of another string declaration!\n";
 						}
 						$parsed = "";
-						if($line[count($line)-1] == ']') {
-							for($j=1; $j<count($line); $j++) {
+						if($line[strlen($line)-1] == ']') {
+							for($j=1; $j<strlen($line)-1; $j++) {
 								$parsed .= $line[$j];
 							}
 						}
@@ -82,8 +83,8 @@ class Localization {
 						$name = $parsed;
 					} else if($line[0] == '{') {
 						$parsed = "";
-						if($line[count($line)-1] == '}') {
-							for($j=1; $j<count($line); $j++) {
+						if($line[strlen($line)-1] == '}') {
+							for($j=1; $j<strlen($line)-1; $j++) {
 								$parsed .= $line[$j];
 							}
 						}
@@ -97,7 +98,7 @@ class Localization {
 									$tmpcat = $category;
 									$category = array_pop($categories);
 									if($category == null) {
-										array_push($file, $tmpcat);
+										array_push($this->file, $tmpcat);
 									} else {
 										$category->addLocalizationEntry($tmpcat);
 									}
@@ -118,8 +119,8 @@ class Localization {
 								print "SLLF Parser: ".basename($filepath).":".$i." WARNING: Skipping empty value of string!\n";
 							} else {
 								$str = new LocalizationString($name, $value);
-								if($category = null) {
-									array_push($file, $str);
+								if($category == null) {
+									array_push($this->file, $str);
 								} else {
 									$category->addLocalizationEntry($str);
 								}
@@ -130,6 +131,7 @@ class Localization {
 					}
 				}
 			} while(!feof($fp));
+			fclose($fp);
 		}
 	}
 	
@@ -141,14 +143,14 @@ class Localization {
 			throw new FilesystemException($this->basepath, "Cannot open the directory!");
 		}
 		foreach ($dir as $file) {
-			if(is_file($basepath."/".$file) && preg_split($file, ".")[1] == "sllf") {
+			if(is_file($this->basepath."/".$file) && explode(".", $file)[1] == "sllf") {
 				array_push($this->locales, basename($file, ".sllf"));
 			}
 		}
 		if(empty($this->locales)) {
 			throw new FilesystemException($this->basepath, "No SLLF files present in the directory!");
 		}
-		if(locale != null) {
+		if($locale != null) {
 			$found=false;
 			foreach($this->locales as $arrlocale) {
 				if($locale == $arrlocale) {
@@ -162,23 +164,24 @@ class Localization {
 			$this->locale = $locale;
 			$this->file = array();
 			$filepath = $this->basepath."/".$locale.".sllf";
-			$fp = fopen($filepath, "w");
+			$fp = fopen($filepath, "r");
 			$name = "";
 			$value = "";
 			$category = null;
 			$categories = array();
 			$i = 0;
 			do {
-				$line = trim(fgets($fp));
+				$line = fgets($fp);
 				if($line != false) {
+					$line = trim($line);
 					$i++;
 					if($line[0] == '[') {
 						if($name != "") {
 							print "SLLF Parser: ".basename($filepath).":".$i." WARNING: Not adding previous string because found the beginning of another string declaration!\n";
 						}
 						$parsed = "";
-						if($line[count($line)-1] == ']') {
-							for($j=1; $j<count($line); $j++) {
+						if($line[strlen($line)-1] == ']') {
+							for($j=1; $j<strlen($line)-1; $j++) {
 								$parsed .= $line[$j];
 							}
 						}
@@ -188,8 +191,8 @@ class Localization {
 						$name = $parsed;
 					} else if($line[0] == '{') {
 						$parsed = "";
-						if($line[count($line)-1] == '}') {
-							for($j=1; $j<count($line); $j++) {
+						if($line[strlen($line)-1] == '}') {
+							for($j=1; $j<strlen($line)-1; $j++) {
 								$parsed .= $line[$j];
 							}
 						}
@@ -203,7 +206,7 @@ class Localization {
 									$tmpcat = $category;
 									$category = array_pop($categories);
 									if($category == null) {
-										array_push($file, $tmpcat);
+										array_push($this->file, $tmpcat);
 									} else {
 										$category->addLocalizationEntry($tmpcat);
 									}
@@ -224,8 +227,8 @@ class Localization {
 								print "SLLF Parser: ".basename($filepath).":".$i." WARNING: Skipping empty value of string!\n";
 							} else {
 								$str = new LocalizationString($name, $value);
-								if($category = null) {
-									array_push($file, $str);
+								if($category == null) {
+									array_push($this->file, $str);
 								} else {
 									$category->addLocalizationEntry($str);
 								}
@@ -236,6 +239,7 @@ class Localization {
 					}
 				}
 			} while(!feof($fp));
+			fclose($fp);
 		}
 	}
 	
@@ -248,8 +252,8 @@ class Localization {
 		if($queryString == "") {
 			return "simplelion:err:invalid_query: empty";
 		}
-		$splitQuery = preg_split($splitQuery, ".");
-		if($file == null || count($file) == 0) {
+		$splitQuery = explode(".", $queryString);
+		if($this->file == null || count($this->file) == 0) {
 			return "simplelion:err:no_locale";
 		}
 		$cat = null;
@@ -257,9 +261,9 @@ class Localization {
 			if($curr == "") {
 				return "simplelion:err:invalid_query: ".$queryString;
 			} else {
-				if(cat == null) {
+				if($cat == null) {
 					$found = false;
-					foreach($file as $entry) {
+					foreach($this->file as $entry) {
 						if($entry->name() == $curr) {
 							if($splitQuery[count($splitQuery)-1] == $curr) {
 								if($entry instanceof LocalizationString) {
@@ -307,10 +311,11 @@ class Localization {
 			throw new FilesystemException($this->basepath, "Cannot open the directory!");
 		}
 		foreach ($dir as $file) {
-			if(is_file($basepath."/".$file) && preg_split($file, ".")[1] == "sllf") {
+			if(is_file($this->basepath."/".$file) && explode(".", $file)[1] == "sllf") {
 				array_push($this->locales, basename($file, ".sllf"));
 			}
 		}
+		return $this->locales;
 	}
 	
 	function toSLLF() { ///< \brief A method that returns the Localization object in SLLF format.
